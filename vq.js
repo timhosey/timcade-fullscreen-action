@@ -36,8 +36,12 @@ function check_queue() {
         if (err !== null) {
           console.log('Something went wrong: ' + err);
         } else {
-          video_data = data;
-          play_video(data['vidName']);
+          if (video_data != false) {
+            video_data = data;
+            play_video(data['vidName']);
+          } else {
+            console.log('Queue is empty.');
+          }
         }
       }
     );
