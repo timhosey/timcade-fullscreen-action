@@ -7,16 +7,16 @@
     <title>Full Screen Action Overlay</title>
     <style>
       body {
-        height: <?= $RES_HEIGHT ?>;
-        width: <?= $RES_WIDTH ?>;
+        height: <?= $RES_HEIGHT ?>px;
+        width: <?= $RES_WIDTH ?>px;
         padding: 0px;
         top: 0px;
         left: 0px;
       }
 
       video {
-        width: <?= $RES_HEIGHT ?>;
-        height: <?= $RES_WIDTH ?>;
+        width: <?= $RES_HEIGHT ?>px;
+        height: <?= $RES_WIDTH ?>px;
         margin: 0 auto;
         padding: 0px;
       }
