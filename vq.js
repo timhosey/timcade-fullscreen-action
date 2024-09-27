@@ -36,7 +36,7 @@ function check_queue() {
         if (err !== null) {
           console.log('Something went wrong: ' + err);
         } else {
-          if (video_data != false) {
+          if (data['vidName'] != undefined) {
             video_data = data;
             play_video(data['vidName']);
           } else {
