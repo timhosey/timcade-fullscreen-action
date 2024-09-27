@@ -8,6 +8,8 @@ playing = false;
 waiting = false;
 firstrun = 1;
 
+video_data = [];
+
 // Sets up the video
 function play_video(fileName) {
   source_el.setAttribute('src', 'video/'+fileName+'.webm');
@@ -28,18 +30,30 @@ function check_queue() {
   if (!waiting && !playing) {
     // TODO: Should check for a new video
     console.log('Playing video...');
-    play_video('end-of-computer');
+    // play_video('end-of-computer');
+    get_json('video_queue.php?action=queue',
+      function(err, data) {
+        if (err !== null) {
+          console.log('Something went wrong: ' + err);
+        } else {
+          video_data = data;
+          play_video(data['vidName']);
+        }
+      }
+    );
   }
-  /*
-  get_json('video_queue.php?action=queue',
+}
+
+function remove_video(id) {
+  get_json('video_queue.php?action=remove&id='+id,
     function(err, data) {
       if (err !== null) {
         console.log('Something went wrong: ' + err);
       } else {
-        console.log('Your queue count: ' + data.query.count);
+        console.log('removed: '+data);
       }
-    });
-  */
+    }
+  );
 }
 
 // JSON get function
@@ -59,7 +73,8 @@ var get_json = function(url, callback) {
 };
 
 video_el.addEventListener('ended', function(event) {
-  console.log('video finished');
+  console.log('video finished, id '+video_data['id']);
+  remove_video(video_data['id']);
   // Sets waiting to true and kicks off a timer
   waiting = true;
   // Sets a timeout for the pause duration
