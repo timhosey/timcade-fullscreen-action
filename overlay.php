@@ -15,8 +15,9 @@
       }
 
       video {
-        width: <?= $RES_HEIGHT ?>px;
-        height: <?= $RES_WIDTH ?>px;
+        position: absolute;
+        height: <?= $RES_HEIGHT ?>px;
+        width: <?= $RES_WIDTH ?>px;
         margin: 0 auto;
         top: 0px;
         left: 0px;
