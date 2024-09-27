@@ -18,6 +18,8 @@
         width: <?= $RES_HEIGHT ?>px;
         height: <?= $RES_WIDTH ?>px;
         margin: 0 auto;
+        top: 0px;
+        left: 0px;
         padding: 0px;
       }
     </style>
