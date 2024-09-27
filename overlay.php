@@ -20,10 +20,14 @@
         padding: 0px;
       }
     </style>
+    <script>
+      pause = <?= $PAUSE_BETWEEN ?>;
+    </script>
   </head>
-  <body>
-    <video autoplay="autoplay">
-      <source src="video/supercoolvideo.mp4" type="video/webm" />
+  <body onload="setInterval(check_queue, 10000)">
+    <video id="video">
+      <source id="videosrc">
     </video>
+    <script type="text/javascript" src="vq.js"></script>
   </body>
 </html>
