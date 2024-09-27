@@ -6,7 +6,7 @@ Your webhook should point at `video_queue.php?action=add&vname=NAME_OF_WEBM_WITH
 
 The file `overlay.php` should be set to the dimensions of your canvas in OBS, and the `overlay.php` file is what you put in your Browser Source, with the dimensions of the Browser Source set to the same dimensions. The default is 1920x1080, so no need to change this setting if you're running at that resolution on your canvas.
 
+The other endpoint to know about is `video_queue.php?action=remove&id=ENTRY_ID` based on the entry into the SQLite database. This is known automagically by the Javascript and will trigger when the video concludes playing.
+
 ## TODO
-* Store queue as a text file
-* The `queue` action should return JSON of all the enqueued videos
-* JavaScript should calculate video length + a setting that can be configured as a number of seconds before playing the next video
+* Nothing right now
