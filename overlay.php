@@ -28,10 +28,8 @@
       pause = <?= $PAUSE_BETWEEN ?>;
     </script>
   </head>
-  <body onload="setInterval(check_queue, 10000)">
-    <video id="video">
-      <source id="videosrc">
-    </video>
+  <body onload="setInterval(check_queue, 1000)">
+    <video id="video"></video>
     <script type="text/javascript" src="vq.js"></script>
   </body>
 </html>
