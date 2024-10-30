@@ -1,7 +1,7 @@
 // Script that will automatically run to process queue and play videos,
 // with pauses in between
-video_el = document.getElementById('video');
-source_el = document.getElementById('videosrc');
+var video = document.getElementById('video');
+var source = document.createElement('source');
 
 // Variable to indicate if a video is playing actively or not
 playing = false;
@@ -12,14 +12,15 @@ video_data = [];
 
 // Sets up the video
 function play_video(fileName) {
-  source_el.setAttribute('src', 'video/'+fileName+'.webm');
-  source_el.setAttribute('type', 'video/webm');
-  video.appendChild(source_el);
+  video.appendChild(source);
+  source.setAttribute('src', 'video/'+fileName+'.webm');
+  source.setAttribute('type', 'video/webm');
+  video.load();
+  video.play();
   playing = true;
-  video_el.play();
   console.log({
-    src: source_el.getAttribute('src'),
-    type: source_el.getAttribute('type'),
+    src: source.getAttribute('src'),
+    type: source.getAttribute('type'),
   });
 }
 
@@ -76,8 +77,9 @@ var get_json = function(url, callback) {
   xhr.send();
 };
 
-video_el.addEventListener('ended', function(event) {
+video.addEventListener('ended', function(event) {
   console.log('video finished, id '+video_data['id']);
+  video.removeChild(source);
   remove_video(video_data['id']);
   // Sets waiting to true and kicks off a timer
   waiting = true;
